@@ -4,58 +4,57 @@ import FormProfile from "./FormProfile"
 
 export default function Movements(){
     const arr = [{
-    "Saldo":"4000000",
+    "Saldo":"$3000000",
     "fecha":"Sun Oct 16 2022",
-    "fullname":"ñaokflvoelkv ldkf",
-    "identity":"6413518",
-    "nroCuenta":1637432,
-    "password":"",
-    "rol":"",
-    "username": "ajjfnvejrfm"},
-    {"Saldo":"4000000",
-    "fecha":"Sun Oct 16 2022",
-    "fullname":"ñaokflvoelkv ldkf",
-    "identity":"6413518",
-    "nroCuenta":1637432,
-    "password":"",
-    "rol":"",
-    "username": "ajjfnvejrfm"},
-    {"Saldo":"4000000",
-    "fecha":"Sun Oct 16 2022",
-    "fullname":"ñaokflvoelkv ldkf",
-    "identity":"6413518",
-    "nroCuenta":1637432,
-    "password":"",
-    "rol":"",
-    "username": "ajjfnvejrfm"},]
+    "concepto":"Pago nomina",
+    "r":false
+    },
+    {"Saldo":"$-100000",
+    "fecha":"Sun Oct 14 2022",
+    "concepto":"retiro corresponal",
+    "r":true
+    },
+    {"Saldo":"$-100000",
+    "fecha":"Sun Oct 12 2022",
+    "concepto":"PAGO SERVICIOS",
+    "r":true
+    },
+    {
+        "Saldo":"$350000",
+        "fecha":"Sun Oct 12 2022",
+        "concepto":"TRANSFERENCIA DE NEQUI",
+        "r":false
+        },
+        {"Saldo":"$-100000",
+        "fecha":"Sun Oct 12 2022",
+        "concepto":"PAGO TIGO",
+        "r":true
+        },
+        {"Saldo":"$100000",
+        "fecha":"Sun Oct 10 2022",
+        "concepto":"PAGO PROVEEDORES",
+        "r":false
+        }]
     return(
         <View >
             {
                 arr.map(movement => {
                    return(
-                    <View style={listas.container}>
+                    <View style={{backgroundColor:movement.r?'#CD5C5C':'#98FB98',borderWidth:1}}>
                         <View style={{display:'flex',flexDirection:'row'}}>
                             <FormProfile
-                            label='Nombre: '
-                            dato={movement.fullname}
-                            />
-                            
+                            label='Fecha:  '
+                            dato={movement.fecha}
+                            />                         
                             <FormProfile
-                            label = 'Identificacion'
-                            dato = {movement.identity}
-                            />
-                            
+                            label = 'Valor: '
+                            dato = {movement.Saldo}
+                            />                         
                         </View>
                             <FormProfile
-                            label='Apertura de Cuenta: '
-                            dato = {movement.fecha}
-                            />
-                        
-                            <FormProfile
-                            label='Numero de cuenta: '
-                            dato = {movement.nroCuenta}
-                            />
-                
+                            label='Concepto: '
+                            dato = {movement.concepto}
+                            />               
                     </View> 
                    )
                   

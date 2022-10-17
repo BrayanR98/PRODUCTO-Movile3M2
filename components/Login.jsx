@@ -12,9 +12,7 @@ export default function Login({navigation}){
          password:''
      })
     // console.log(lista.lista())
-    const onSubmit= data =>{
-        
-        
+    const onSubmit= data =>{     
         let arr = lista.lista();
         let val = false
         let user = {}
@@ -26,7 +24,7 @@ export default function Login({navigation}){
              user = arr[i]
         }
      }
-     if(val){navigation.navigate('Home',user)}
+     if(val){navigation.navigate(user.rol?'Home':'Homeu',user)}
      else{console.log('usuario no se encuentra')}
     }
     return(
@@ -58,7 +56,7 @@ export default function Login({navigation}){
             {errors.userName ?.type == 'required' && <Text style={{color:'red'}}> El campo es requerido </Text>}
             {errors.userName ?.type == 'pattern' && <Text style={{color:'red'}}> debecontener solo letras y espacios</Text>}
             {errors.userName ?.type == 'maxLength' && <Text style={{color:'red'}}> Debe contener maximo 30 caracteres</Text>}
-            {errors.userName ?.type == 'minlenght' && <Text style={{color:'red'}}>Debe contener minimo 8 caracteres</Text>} 
+            {errors.userName ?.type == 'minLength' && <Text style={{color:'red'}}>Debe contener minimo 8 caracteres</Text>} 
 
 
         <Controller 
@@ -66,8 +64,8 @@ export default function Login({navigation}){
         rules={{
             required:true,
             pattern:/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/g,
-            maxLength:30,
-            minLength:8
+            maxLength:20,
+            minLength:6
 
         }}
         render={({field:{onChange,onBlur,value}})=>(
@@ -81,10 +79,10 @@ export default function Login({navigation}){
             />)}
         name='password'
         />
-        {errors.password?.type=='required'&&<Text style={{color:'red'}}>Debe agregar una contraseña</Text>}
+        {errors.password?.type=='required'&&<Text style={{color:'red'}}>El campo es requerido</Text>}
         {errors.password?.type=='pattern'&&<Text style={{color:'red'}}>La contraseña debe tener numeros y letras y caracter especial</Text>}
-        {errors.password?.type=='maxLength'&&<Text style={{color:'red'}}>debe tener maximo 16 caracteres</Text>}
-        {errors.password?.type=='minLength'&&<Text style={{color:'red'}}>debe tener minimo 8 caracteres</Text>} 
+        {errors.password?.type=='maxLength'&&<Text style={{color:'red'}}>debe tener maximo 20 caracteres</Text>}
+        {errors.password?.type=='minLength'&&<Text style={{color:'red'}}>debe tener minimo 6 caracteres</Text>} 
 
          <TouchableOpacity style={styles.butons}
         onPress={handleSubmit(onSubmit)}>

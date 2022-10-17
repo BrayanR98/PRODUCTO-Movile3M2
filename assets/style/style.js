@@ -40,12 +40,9 @@ const styles = StyleSheet.create({
   })
   const listas = StyleSheet.create({
     container:{
-      border:'solid',
+      boder:'solid ',
       backgroundColor:'#98FB98',
 
-    },
-    text:{
-      fontSize:10
     }
   })
 

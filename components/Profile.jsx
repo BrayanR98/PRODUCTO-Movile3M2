@@ -1,8 +1,14 @@
 import FormProfile from "./FormProfile"
-import { User } from "./HomeTabs"
- 
-export default function Profile({navigation}){
-
+import { Usera } from "./HomeTabs"
+import { Useru } from "./HomeTabu"
+ let User={}
+export default function Profile({navigation}){ 
+    if(Usera.rol){
+       User=Usera
+    }else {
+        User=Useru 
+    }
+    console.log(Useru)
 
     return(
         <>

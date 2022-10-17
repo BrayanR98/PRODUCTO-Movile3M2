@@ -3,7 +3,6 @@ import {useForm,Controller} from 'react-hook-form'
 import {styles} from '../assets/style/style'
 import { useState } from 'react';
 import User from './User';
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function Register({navigation}){
     const {register,control,handleSubmit,formState:{errors}}=useForm({
@@ -84,39 +83,14 @@ export default function Register({navigation}){
       {errors.username?.type=='maxLength'&&<Text style={{color:'red'}}> El Usuario debe tener almenos 30 chars</Text>}
       {errors.username?.type=='minLength'&&<Text style={{color:'red'}}> El Usuario debe tener minimo 8 chars</Text>}
       {errors.username?.type=='pattern'&&<Text style={{color:'red'}}> El Usuario debe tener solo letras y espacios</Text>}
-     
-      {/* <Controller 
-     control={control}
-     rules={{
-        required:true,
-        pattern:/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/g,
-        maxLength:30,
-        minLength:8
-
-     }}
-     render={({field:{onChange,onBlur,value}})=>(
-        <TextInput
-        style={[styles.inputs,{borderColor:errors.password?.type=='required'||errors.password?.type=='pattern'||errors.password?.type=='maxLength'||errors.password?.type=='minlenght'?'red':'green'}]}
-        placeholder="contraseña"
-        onchange={onChange}
-        onBlur={onBlur}
-        value={value}
-        secureTextEntry={true}
-        />)}
-     name='password'
-     />
-    {errors.password?.type=='required'&&<Text style={{color:'red'}}>Debe agregar una contraseña</Text>}
-    {errors.password?.type=='pattern'&&<Text style={{color:'red'}}>La contraseña debe tener numeros y letras y caracter especial</Text>}
-    {errors.password?.type=='maxLength'&&<Text style={{color:'red'}}>debe tener maximo 16 caracteres</Text>}
-    {errors.password?.type=='minLength'&&<Text style={{color:'red'}}>debe tener minimo 8 caracteres</Text>}  */}
 
 <Controller
         control={control}
         rules={{
           required:true,
           pattern:/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/g,
-          maxLength:30,
-          minLength:8
+          maxLength:20,
+          minLength:6
         }}
         render={({field:{onChange,onBlur,value}})=>(
           <TextInput
@@ -134,15 +108,15 @@ export default function Register({navigation}){
 
     {errors.password?.type=='required'&&<Text style={{color:'red'}}>Debe agregar una contraseña</Text>}
     {errors.password?.type=='pattern'&&<Text style={{color:'red'}}>La contraseña debe tener numeros y letras y caracter especial</Text>}
-    {errors.password?.type=='maxLength'&&<Text style={{color:'red'}}>debe tener maximo 16 caracteres</Text>}
-    {errors.password?.type=='minLength'&&<Text style={{color:'red'}}>debe tener minimo 8 caracteres</Text>}
+    {errors.password?.type=='maxLength'&&<Text style={{color:'red'}}>debe tener maximo 20 caracteres</Text>}
+    {errors.password?.type=='minLength'&&<Text style={{color:'red'}}>debe tener minimo 6 caracteres</Text>}
 
     <Controller
     control={control}
     rules={{
         required:true,
         pattern:/^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,10}(,\d{3})*(\.\d+)?$/,
-        maxLength:10,
+        maxLength:11,
         minLength:5
     }}
     render={({field:{onChange,onBlur,value}})=>(
@@ -157,7 +131,7 @@ export default function Register({navigation}){
     />
     {errors.identity?.type=='required'&&<Text style={{color:'red'}}>Debe ingresar su cedula</Text>}
     {errors.identity?.type=='pattern'&&<Text style={{color:'red'}}>Debe ingresar numeros</Text>}
-    {errors.identity?.type=='maxLength'&&<Text style={{color:'red'}}>cedula fuera de rango</Text>}
+    {errors.identity?.type=='maxLength'&&<Text style={{color:'red'}}>cedula fuera de rango max 11 caracteres</Text>}
     {errors.identity?.type=='minLength'&&<Text style={{color:'red'}}>la cedula debe contener minimo 5 caracteres</Text>}
     <Controller
     control={control}
